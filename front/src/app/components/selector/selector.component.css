@@ -1,0 +1,25 @@
+.flex-box {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.selectors {
+    border-style: solid;
+}
+
+.normal {
+    margin-bottom: 10px;
+    border-style: solid;
+    width: 50%;
+    text-align: center;
+    cursor:pointer;
+}
+
+.prefer {
+    border-style: solid;
+    width: 50%;
+    text-align: center;
+    cursor:pointer;
+}
