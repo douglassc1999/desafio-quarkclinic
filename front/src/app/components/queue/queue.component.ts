@@ -1,11 +1,11 @@
-import { Position } from './../../model/dto/position.dto';
+import { Position } from '../../models/dto/position.dto';
 import { PacientService } from './../../services/pacient.service';
 import { QueueService } from './../../services/queue.service';
 import { Router, ActivatedRoute } from '@angular/router';
-import { Queue } from '../../model/queue.model';
+import { Queue } from '../../models/queue.model';
 import { Component, OnInit, Inject } from '@angular/core';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { Location, UpperCasePipe } from '@angular/common';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-queue',

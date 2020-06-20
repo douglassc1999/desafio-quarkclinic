@@ -1,4 +1,4 @@
-import { Pacient } from './../../../model/pacient.model';
+import { Pacient } from '../../../models/pacient.model';
 import { Component, OnInit, Inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 

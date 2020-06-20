@@ -1,4 +1,4 @@
 <p>Relatorio do paciente</p>
 <div>Nome: {{ data.name }}</div>
-<div>Telefone: {{ data.phone }}</div>
-<div>CPF: {{ data.cpf }}</div>
+<div>Telefone: {{ data.phone | mask: '(00) 00000-0000'}}</div>
+<div>CPF: {{ data.cpf | mask: '000.000.000-00'}}</div>

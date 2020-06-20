@@ -1,4 +1,4 @@
-import { Queue } from './../model/queue.model';
+import { Queue } from '../models/queue.model';
 
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';

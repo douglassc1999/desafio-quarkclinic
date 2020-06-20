@@ -1,5 +1,6 @@
-import { Position } from './../model/dto/position.dto';
-import { Pacient } from './../model/pacient.model';
+import { PacientDTO } from './../models/dto/pacient.dto';
+import { Position } from '../models/dto/position.dto';
+import { Pacient } from '../models/pacient.model';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
@@ -13,9 +14,9 @@ export class PacientService {
 
   constructor(private http: HttpClient) { }
 
-  getPacient(filter: string): Observable<Pacient> {
-    const url = `${this.baseUrl}/${filter}`
-    return this.http.get<Pacient>(url)
+  getPacient(pacientDTO: PacientDTO): Observable<Pacient> {
+    const url = `${this.baseUrl}`
+    return this.http.post<Pacient>(url, pacientDTO)
   }
 
   addPacienteInQueue(prefix: string, prefer: string): Observable<Position> {

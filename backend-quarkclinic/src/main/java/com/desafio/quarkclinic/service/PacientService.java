@@ -23,6 +23,7 @@ public class PacientService {
 
     /**
      * Método utilizado para salvar um paciente no banco
+     *
      * @param pacient Paciente a ser salvo
      */
     public void save(Pacient pacient) {
@@ -32,8 +33,9 @@ public class PacientService {
 
     /**
      * Método utilizado para adicionar um paciente a uma fila
+     *
      * @param prefixQueue é o prefixo da fila em que o paciente será inserido
-     * @param prefer indica o tipo de fila: preferencial ou normal
+     * @param prefer      indica o tipo de fila: preferencial ou normal
      * @return um DTO com a posição, horário e o tipo da fila
      */
     public PositionDTO addPacientInQueue(String prefixQueue, String prefer) {
@@ -69,6 +71,20 @@ public class PacientService {
 
         return new PositionDTO(queue.getPrefix() + "-" + pos,
                 att);
+    }
+
+    /**
+     * Método para filtrar um paciente por cpf, data de nascimento ou telefone
+     * @param filter é o conteúdo a ser buscado
+     * @param type é campo a ser filtrado
+     * @return Pacient
+     */
+    public Pacient getPacientByFilter(String filter, String type) {
+        if ("CPF".contentEquals(type)) return pacientRepository.findByCpfAndAndSchedule(filter);
+        // TODO Ajustar par tipo date
+        else if ("Data de nascimento".contentEquals(type)) return pacientRepository.findByBirthdayAndAndSchedule(filter);
+        else if ("Telefone".contentEquals(type)) return pacientRepository.findByPhoneAndAndSchedule(filter);
+        else throw new RuntimeException("Não encontrado");
     }
 
     /** TODO READ: Método para recuperar as filas do banco*/

@@ -1,5 +1,6 @@
+import { PacientDTO } from './../../../models/dto/pacient.dto';
 import { PacientService } from './../../../services/pacient.service';
-import { Pacient } from './../../../model/pacient.model';
+import { Pacient } from '../../../models/pacient.model';
 import { ModalReportPacientComponent } from './../modal-report-pacient/modal-report-pacient.component';
 import { MAT_DIALOG_DATA, MatDialogRef, MatDialog } from '@angular/material/dialog';
 import { Component, OnInit, Inject } from '@angular/core';
@@ -14,6 +15,11 @@ export class ModalSearchAgendaComponent implements OnInit {
   value: string = 'CPF'
 
   screen: string = ''
+
+  pacientFilter: PacientDTO = {
+    filter: '',
+    type: ''
+  }
 
   paciente: Pacient
 
@@ -36,7 +42,7 @@ export class ModalSearchAgendaComponent implements OnInit {
     // TODO APLICAR A MÁSCARA
     var tab = event.toElement.innerText
     if (tab === 'CPF' || tab === 'Data de nascimento' || tab === 'Telefone') {
-      this.value = tab 
+      this.value = tab
       this.data = ''
     }
     console.log(this.value)
@@ -50,27 +56,24 @@ export class ModalSearchAgendaComponent implements OnInit {
   }
 
   confirmReportPacient(): void {
-  
-    // this.paciente = {
-    //   name: 'Douglas de Souza Carvalho',
-    //   birthday: '20/12/1999', 
-    //   phone: '87300147',
-    //   cpf: '017.277.744-50'
-    // }
 
     const filter: string = this.formatValue(this.data)
+    this.pacientFilter = {
+      filter: filter,
+      type: this.value
+    }
     console.log(filter)
     var dialogRef
-    this.pacientService.getPacient(filter[0]).subscribe(paciente => {
+    this.pacientService.getPacient(this.pacientFilter).subscribe(paciente => {
       this.paciente = paciente
-      console.log(this.paciente)
+      console.log(paciente)
 
-      dialogRef = this.dialog.open(ModalReportPacientComponent, {
+      this.dialog.open(ModalReportPacientComponent, {
         width: '800px',
-        data: this.paciente
+        data: paciente
       });
     })
- 
+
     // dialogRef = this.dialog.open(ModalReportPacientComponent, {
     //   width: '800px',
     //   data: this.paciente
@@ -82,8 +85,8 @@ export class ModalSearchAgendaComponent implements OnInit {
   }
 
   formatValue(value: string): string {
-    if(this.value === 'CPF') return value.substring(0, 11)
-    else if(this.value === 'Data de nascimento') return value.substring(0, 8)
-    else if(this.value === 'Telefone') return value.substring(0, 11)
+    if (this.value === 'CPF') return value.substring(0, 11)
+    else if (this.value === 'Data de nascimento') return value.substring(0, 8)
+    else if (this.value === 'Telefone') return value.substring(0, 11)
   }
 }

@@ -1,5 +1,7 @@
 package com.desafio.quarkclinic.controller;
 
+import com.desafio.quarkclinic.model.Pacient;
+import com.desafio.quarkclinic.model.dto.PacientDTO;
 import com.desafio.quarkclinic.model.dto.PositionDTO;
 import com.desafio.quarkclinic.service.PacientService;
 import lombok.RequiredArgsConstructor;
@@ -19,6 +21,11 @@ public class PacientController {
     @GetMapping
     public ResponseEntity<PositionDTO> addPacient(@RequestParam String prefix, @RequestParam String prefer) {
         return new ResponseEntity<>(pacientService.addPacientInQueue(prefix, prefer), HttpStatus.OK) ;
+    }
+
+    @PostMapping
+    public ResponseEntity<Pacient> getPacientByFilter(@RequestBody PacientDTO pacientDTO) {
+        return new ResponseEntity<>(pacientService.getPacientByFilter(pacientDTO.getFilter(), pacientDTO.getType()), HttpStatus.OK);
     }
 
 }

@@ -51,15 +51,15 @@ public class DataLoader implements ApplicationRunner {
     private List<Pacient> createPacients() {
         Pacient pacient, pacient1, pacient2;
         List<Pacient> pacients = new ArrayList<>();
-        pacient = new Pacient("Amanda Carvalho", "017.277.744-50", "20/12/1999", "84987300147");
+        pacient = new Pacient("Amanda Carvalho", "01727774450", "20/12/1999", "84987300147");
         pacientService.save(pacient);
         pacients.add(pacient);
 
-        pacient1 = new Pacient("Maria Soza", "087.256.769-78", "20/12/1999", "84987300147");
+        pacient1 = new Pacient("Maria Soza", "08725676978", "20/12/1999", "84987300147");
         pacientService.save(pacient1);
         pacients.add(pacient1);
 
-        pacient2 = new Pacient("Vilma Arcanjo", "785.277.454-50", "20/12/1999", "84987300147");
+        pacient2 = new Pacient("Vilma Arcanjo", "78527745450", "20/12/1999", "84987300147");
         pacientService.save(pacient2);
         pacients.add(pacient2);
         return pacients;
