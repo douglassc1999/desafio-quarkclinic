@@ -3,7 +3,6 @@ package com.desafio.quarkclinic.controller;
 import com.desafio.quarkclinic.model.Queue;
 import com.desafio.quarkclinic.service.QueueService;
 import lombok.RequiredArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -18,7 +17,7 @@ import java.util.List;
 @RequestMapping("queues")
 @RequiredArgsConstructor(onConstructor = @__(@Autowired))
 @CrossOrigin(maxAge = 3600, origins = "*")
-public class queueController {
+public class QueueController {
 
     private final QueueService queueService;
 

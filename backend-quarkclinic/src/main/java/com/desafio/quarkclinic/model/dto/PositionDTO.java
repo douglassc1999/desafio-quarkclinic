@@ -8,6 +8,5 @@ import lombok.Data;
 public class PositionDTO {
     private String position;
     // data de cadastro
-    // tipo de atendimento
     private String prefer;
 }

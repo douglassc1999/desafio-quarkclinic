@@ -22,7 +22,8 @@ public class PacientService {
     private final QueueRepository queueRepository;
 
     /**
-     * TODO CREATE: Método para criar fila no banco
+     * Método utilizado para salvar um paciente no banco
+     * @param pacient Paciente a ser salvo
      */
     public void save(Pacient pacient) {
         pacientRepository.save(pacient);
@@ -30,7 +31,10 @@ public class PacientService {
     }
 
     /**
-     * TODO Método para adicionar um paciente a lista
+     * Método utilizado para adicionar um paciente a uma fila
+     * @param prefixQueue é o prefixo da fila em que o paciente será inserido
+     * @param prefer indica o tipo de fila: preferencial ou normal
+     * @return um DTO com a posição, horário e o tipo da fila
      */
     public PositionDTO addPacientInQueue(String prefixQueue, String prefer) {
         Queue queueRepo = queueRepository.findByPrefix(prefixQueue);

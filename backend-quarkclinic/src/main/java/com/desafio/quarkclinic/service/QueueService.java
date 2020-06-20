@@ -16,16 +16,24 @@ public class QueueService {
 
     private final QueueRepository queueRepository;
 
-    /** TODO CREATE: Método para criar fila no banco*/
+    /**
+     * Método para criar fila no banco
+     * @param queue é a fila a ser adicionada ao banco
+     */
     public void save(Queue queue) {
         queueRepository.save(queue);
         log.info("created queue: " + queue.getName());
     }
 
-    /** TODO READ: Método para recuperar as filas do banco*/
+    /** TODO READ: */
+    /**
+     * Método para recuperar as filas do banco
+     * @return é a lista de filas contidas no banco
+     */
     public List<Queue> getAll() {
         return (List<Queue>) queueRepository.findAll();
     }
+
     /** TODO UPDATE: Método para atualizar fila do banco*/
 
     /** TODO DELETE: Método para deletar fila do banco*/

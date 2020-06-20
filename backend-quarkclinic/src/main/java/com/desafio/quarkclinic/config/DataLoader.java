@@ -26,7 +26,7 @@ public class DataLoader implements ApplicationRunner {
     private String dbmode;
 
     @Override
-    public void run(ApplicationArguments args) throws Exception {
+    public void run(ApplicationArguments args) {
 
         if (dbmode.equals("create")) {
             // Popula o banco
