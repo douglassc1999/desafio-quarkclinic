@@ -1,6 +1,6 @@
 <mat-grid-list class="list-queues" cols="2" rowHeight="100px">
     <mat-grid-tile *ngFor="let queue of queues" 
-        (click)="showOnConsole(queue.prefix)">
+        (click)="addPacientOnQueue(queue.prefix)">
         {{queue.name}}
     </mat-grid-tile>
 </mat-grid-list>

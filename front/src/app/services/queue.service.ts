@@ -11,7 +11,7 @@ export class QueueService {
 
   constructor(private http: HttpClient) { }
 
-  baseUrl = 'http://localhost:3001/queue'
+  baseUrl = 'http://localhost:9000/queues'
 
   onMessage(msg: string): void {
     console.log(msg)

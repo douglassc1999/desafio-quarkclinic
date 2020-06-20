@@ -38,13 +38,13 @@ public class DataLoader implements ApplicationRunner {
     }
 
     private void createQueue(List<Pacient> pacients, List<Pacient> pacients2, List<Pacient> pacients3) {
-        Queue mama = new Queue("MA", "Mama", pacients);
+        Queue mama = new Queue("MA", "Mama", pacients, new ArrayList<>());
         queueService.save(mama);
 
-        Queue pucao = new Queue("PU", "Punção", pacients2);
+        Queue pucao = new Queue("PU", "Punção", pacients2, new ArrayList<>());
         queueService.save(pucao);
 
-        Queue raio = new Queue("RX", "Raio-X", pacients3);
+        Queue raio = new Queue("RX", "Raio-X", pacients3, new ArrayList<>());
         queueService.save(raio);
     }
 

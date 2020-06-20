@@ -15,9 +15,7 @@ export class SelectorComponent implements OnInit {
   ngOnInit(): void {
   }
 
-
-  // TODO UM MÉTODO SÓ PRA ISSO
-  
+  // TODO UM MÉTODO SÓ PRA ISSO  
   chooseNormal(): void {
     // setar escolha
     console.log("Escolheu fila normal")

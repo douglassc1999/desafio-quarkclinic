@@ -22,7 +22,7 @@ import { SelectorAgendadoComponent } from './components/selector-agendado/select
 import { ModalSearchAgendaComponent } from './components/selector-agendado/modal-search-agenda/modal-search-agenda.component';
 import { MatTabsModule } from '@angular/material/tabs';
 import { ModalReportPacientComponent } from './components/selector-agendado/modal-report-pacient/modal-report-pacient.component';
-import { NgxMaskModule, IConfig } from 'ngx-mask'
+import { NgxMaskModule } from 'ngx-mask'
 
 @NgModule({
   declarations: [
@@ -50,7 +50,7 @@ import { NgxMaskModule, IConfig } from 'ngx-mask'
     MatFormFieldModule,
     MatInputModule,
     MatTabsModule,
-    NgxMaskModule.forRoot(),
+    NgxMaskModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]

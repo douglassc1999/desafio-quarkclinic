@@ -2,6 +2,7 @@ package com.desafio.quarkclinic.service;
 
 import com.desafio.quarkclinic.model.Pacient;
 import com.desafio.quarkclinic.model.Queue;
+import com.desafio.quarkclinic.model.dto.PositionDTO;
 import com.desafio.quarkclinic.repository.PacientRepository;
 import com.desafio.quarkclinic.repository.QueueRepository;
 import lombok.RequiredArgsConstructor;
@@ -20,25 +21,50 @@ public class PacientService {
 
     private final QueueRepository queueRepository;
 
-    /** TODO CREATE: Método para criar fila no banco*/
+    /**
+     * TODO CREATE: Método para criar fila no banco
+     */
     public void save(Pacient pacient) {
         pacientRepository.save(pacient);
         log.info("created pacient: " + pacient.getName());
     }
 
-    /** TODO Método para adicionar um paciente a lista*/
-    public String addPacientInQueue(String prefixQueue) {
+    /**
+     * TODO Método para adicionar um paciente a lista
+     */
+    public PositionDTO addPacientInQueue(String prefixQueue, String prefer) {
         Queue queueRepo = queueRepository.findByPrefix(prefixQueue);
-
         List<Pacient> pacients = queueRepo.getPacients();
-        pacients.add(new Pacient());
+        List<Pacient> pacientsPrefer = queueRepo.getPacientsPrefer();
 
-        queueRepo.setPacients(pacients);
+        Pacient pacientSave = new Pacient();
+        String att;
+        String pos;
 
-        Queue response = queueRepository.save(queueRepo);
-        // return a posição do paciente na fila
-        String index =  String.valueOf(response.getPacients().size());
-        return index;
+        if (prefer.contentEquals("prefer")) {
+            pacientSave.setPrefer(true);
+            att = "PREFERENCIAL";
+        } else {
+            att = "NÃO PREFERENCIAL";
+        }
+
+        Pacient pacient = pacientRepository.save(pacientSave);
+
+        Queue queue;
+        if (prefer.contentEquals("prefer")) {
+            pacientsPrefer.add(pacient);
+            queueRepo.setPacientsPrefer(pacientsPrefer);
+            queue = queueRepository.save(queueRepo);
+            pos = String.valueOf(queue.getPacientsPrefer().size());
+        } else {
+            pacients.add(pacient);
+            queueRepo.setPacients(pacients);
+            queue = queueRepository.save(queueRepo);
+            pos = String.valueOf(queue.getPacients().size());
+        }
+
+        return new PositionDTO(queue.getPrefix() + "-" + pos,
+                att);
     }
 
     /** TODO READ: Método para recuperar as filas do banco*/
