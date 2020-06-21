@@ -1,3 +1,5 @@
+import { UserDTO } from './../../models/dto/user.dto';
+import { AuthService } from './../../services/auth.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,11 +9,22 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LoginComponent implements OnInit {
 
+  user: UserDTO = {
+    username: '',
+    password: ''
+  }
   hide = true;
   
-  constructor() { }
+  constructor(private authService: AuthService) { }
 
   ngOnInit(): void {
+  }
+
+  login() {
+    
+    this.authService.login(this.user)
+    this.user.username = ''
+    this.user.password = ''
   }
 
 }

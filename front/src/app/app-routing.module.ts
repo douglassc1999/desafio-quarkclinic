@@ -1,3 +1,5 @@
+import { AuthGuard } from './guards/auth.guard';
+import { AuthService } from './services/auth.service';
 import { LoginComponent } from './views/login/login.component';
 import { HomeComponent } from './views/home/home.component';
 import { ConfigComponent } from './views/config/config.component';
@@ -10,23 +12,28 @@ import { ChegadaHomeComponent } from './views/chegada-home/chegada-home.componen
 const routes: Routes = [
   {
     path: '',
-    component: HomeComponent
+    component: HomeComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'chegada',
-    component: ChegadaHomeComponent
+    component: ChegadaHomeComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'chegada/filas/:choose',
-    component: QueueComponent
+    component: QueueComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'agendado',
-    component: AgendadoHomeComponent
+    component: AgendadoHomeComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'config',
-    component: ConfigComponent
+    component: ConfigComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'login',
