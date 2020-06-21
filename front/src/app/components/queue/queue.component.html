@@ -1,9 +1,13 @@
-<mat-grid-list class="list-queues" cols="2" rowHeight="100px">
-    <mat-grid-tile *ngFor="let queue of queues" 
-        (click)="addPacientOnQueue(queue.prefix)">
-        {{queue.name}}
-    </mat-grid-tile>
-</mat-grid-list>
+<div class="flex-box">
+    <mat-grid-list class="list-queues" cols="2" rowHeight="150px" [gutterSize]="'10px'">
+        <mat-grid-tile *ngFor="let queue of queues" (click)="addPacientOnQueue(queue.prefix)"
+            class="queueSelector mat-elevation-z6">
+            {{queue.name}}
+        </mat-grid-tile>
+    </mat-grid-list>
 
-<button mat-raised-button color="primary" (click)="goBack()" >Voltar</button>
-<button mat-raised-button color="primary" (click)="goConfig()" >Config</button>
+    <div class="action-buttons">
+        <button mat-raised-button (click)="goBack()">Voltar</button>
+        <button mat-raised-button  routerLink='/login' >Config</button>
+    </div>
+</div>

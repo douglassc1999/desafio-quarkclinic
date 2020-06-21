@@ -1,0 +1,28 @@
+<div class="login-card">
+<mat-card >
+    <mat-card-header>
+        <!-- <img mat-card-image src="https://app.quarkclinic.com.br/app/assets/Logo-3348c3daf10c83b9c7332147a5649024.png" > -->
+        <mat-card-title style="font-size: 40px;">Login</mat-card-title>
+    </mat-card-header>
+
+    <mat-card-content>
+        <mat-form-field appearance="fill">
+            <mat-label>Usuário</mat-label>
+            <input matInput>
+        </mat-form-field>
+        <br>
+        <mat-form-field appearance="fill">
+            <mat-label>Senha</mat-label>
+            <input matInput [type]="hide ? 'password' : 'text'">
+            <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+                [attr.aria-pressed]="hide">
+                <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+            </button>
+        </mat-form-field>
+    </mat-card-content>
+
+    <mat-card-actions>
+        <button mat-raised-button routerLink='/config' >Entrar</button>
+    </mat-card-actions>
+</mat-card>
+</div>

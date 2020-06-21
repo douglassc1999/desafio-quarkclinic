@@ -1,4 +1,9 @@
 <div class="selectors flex-box">
-    <mat-card class="normal" (click)="chooseNormal()">Normal</mat-card>
-    <mat-card class="prefer" (click)="choosePrefer()">Preferencial</mat-card>
+    <img mat-card-image src="https://app.quarkclinic.com.br/app/assets/Logo-3348c3daf10c83b9c7332147a5649024.png" >
+    <mat-card class="normal mat-elevation-z6" (click)="chooseNormal()">Normal</mat-card>
+    <mat-card class="prefer mat-elevation-z6" (click)="choosePrefer()">Preferencial</mat-card>
+
+    <div class="action-buttons">
+        <button mat-raised-button routerLink='/login'>Configuração</button>
+    </div>
 </div>

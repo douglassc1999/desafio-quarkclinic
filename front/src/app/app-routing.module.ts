@@ -1,3 +1,4 @@
+import { LoginComponent } from './views/login/login.component';
 import { HomeComponent } from './views/home/home.component';
 import { ConfigComponent } from './views/config/config.component';
 import { QueueComponent } from './components/queue/queue.component';
@@ -26,6 +27,10 @@ const routes: Routes = [
   {
     path: 'config',
     component: ConfigComponent
+  },
+  {
+    path: 'login',
+    component: LoginComponent
   }
 ];
 

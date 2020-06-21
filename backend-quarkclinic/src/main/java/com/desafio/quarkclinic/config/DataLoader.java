@@ -34,6 +34,11 @@ public class DataLoader implements ApplicationRunner {
             List<Pacient> pacients2 = createPacients();
             List<Pacient> pacients3 = createPacients();
             createQueue(pacients, pacients2, pacients3);
+
+            //Adicionando agendado
+            Pacient pacientSchedule = new Pacient("Rafael Garcia", "01727774450", "20/12/1999", "84987300147");
+            pacientSchedule.setSchedule(true);
+            pacientService.save(pacientSchedule);
         }
     }
 
@@ -51,7 +56,7 @@ public class DataLoader implements ApplicationRunner {
     private List<Pacient> createPacients() {
         Pacient pacient, pacient1, pacient2;
         List<Pacient> pacients = new ArrayList<>();
-        pacient = new Pacient("Amanda Carvalho", "01727774450", "20/12/1999", "84987300147");
+        pacient = new Pacient("Amanda Carvalho", "78527745450", "20/12/1999", "84987300147");
         pacientService.save(pacient);
         pacients.add(pacient);
 
@@ -59,9 +64,10 @@ public class DataLoader implements ApplicationRunner {
         pacientService.save(pacient1);
         pacients.add(pacient1);
 
-        pacient2 = new Pacient("Vilma Arcanjo", "78527745450", "20/12/1999", "84987300147");
+        pacient2 = new Pacient("Vilma Arcanjo", "78527545450", "20/12/1999", "84987300147");
         pacientService.save(pacient2);
         pacients.add(pacient2);
+
         return pacients;
     }
 }

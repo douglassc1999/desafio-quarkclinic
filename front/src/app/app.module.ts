@@ -22,7 +22,9 @@ import { SelectorAgendadoComponent } from './components/selector-agendado/select
 import { ModalSearchAgendaComponent } from './components/selector-agendado/modal-search-agenda/modal-search-agenda.component';
 import { MatTabsModule } from '@angular/material/tabs';
 import { ModalReportPacientComponent } from './components/selector-agendado/modal-report-pacient/modal-report-pacient.component';
-import { NgxMaskModule } from 'ngx-mask'
+import { NgxMaskModule } from 'ngx-mask';
+import { LoginComponent } from './views/login/login.component';
+import { MatIconModule } from '@angular/material/icon';
 
 @NgModule({
   declarations: [
@@ -35,7 +37,8 @@ import { NgxMaskModule } from 'ngx-mask'
     HomeComponent,
     SelectorAgendadoComponent,
     ModalSearchAgendaComponent,
-    ModalReportPacientComponent
+    ModalReportPacientComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
@@ -50,7 +53,8 @@ import { NgxMaskModule } from 'ngx-mask'
     MatFormFieldModule,
     MatInputModule,
     MatTabsModule,
-    NgxMaskModule.forRoot()
+    NgxMaskModule.forRoot(),
+    MatIconModule
   ],
   providers: [],
   bootstrap: [AppComponent]

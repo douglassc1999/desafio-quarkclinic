@@ -1,4 +1,4 @@
-.config-card {
+.login-card {
     /* border-style: solid; */
     display: flex;
     align-items: center;
@@ -34,12 +34,14 @@ mat-card-content > * {
     width: 400px;
 }
 
-mat-card-actions {
-    display: flex;
-    justify-content: flex-end;
-}
 mat-card-actions > button {
-   
+    width: 100%;
     background-color: #498721;
     color: #FFF;
+}
+
+img {
+    object-fit: cover; 
+    width: auto; 
+    height: 100%;
 }

@@ -1,4 +1,35 @@
+.flex-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  height: 100%;
+  background-color: #F3F9D2;
+}
+
+.list-queues {
+  height: 100%;
+  width: 80%;
+  /* border-style: solid; */
+  font-size: 20px;
+  font-weight: 500;
+}
+
 mat-grid-tile {
-  background: lightblue;
+  background: #FFF;
   cursor:pointer;
+}
+
+mat-grid-tile:hover {
+  background: gray;
+}
+
+.action-buttons {
+  display: flex;
+  flex-direction: row;
+}
+
+.action-buttons > button {
+  margin-right: 10px;
+  margin-top: 10px;
 }
