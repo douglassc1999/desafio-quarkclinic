@@ -22,8 +22,8 @@ export class AuthService {
       this.userAuthenticated = true
 
       // pegaria o token do back num fluxo normal
-      window.sessionStorage.setItem('user', JSON.stringify(user.username))
-      window.sessionStorage.setItem('jwt', JSON.stringify('eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c'))
+      window.sessionStorage.setItem('user',user.username)
+      window.sessionStorage.setItem('jwt', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c')
 
       // this.configService.redirectDefaultPage()
       this.router.navigate(['/config'])

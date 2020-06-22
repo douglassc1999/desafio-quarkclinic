@@ -2,6 +2,7 @@ package com.desafio.quarkclinic.service;
 
 import com.desafio.quarkclinic.model.Pacient;
 import com.desafio.quarkclinic.model.Queue;
+import com.desafio.quarkclinic.model.dto.PacientDTO;
 import com.desafio.quarkclinic.model.dto.PositionDTO;
 import com.desafio.quarkclinic.repository.PacientRepository;
 import com.desafio.quarkclinic.repository.QueueRepository;
@@ -97,11 +98,11 @@ public class PacientService {
      * @param type é campo a ser filtrado
      * @return Pacient
      */
-    public Pacient getPacientByFilter(String filter, String type) {
-        if ("CPF".contentEquals(type)) return pacientRepository.findByCpfAndAndSchedule(filter);
-        // TODO Ajustar par tipo date
-        else if ("Data de nascimento".contentEquals(type)) return pacientRepository.findByBirthdayAndAndSchedule(filter);
-        else if ("Telefone".contentEquals(type)) return pacientRepository.findByPhoneAndAndSchedule(filter);
+    public Pacient getPacientByFilter(PacientDTO pacientDTO) {
+        if ("CPF".contentEquals(pacientDTO.getType())) return pacientRepository.findByCpfAndAndSchedule(pacientDTO.getFilter());
+        // TODO Ajustar para tipo date
+        else if ("Data de nascimento".contentEquals(pacientDTO.getType())) return pacientRepository.findByBirthdayAndAndSchedule(pacientDTO.getFilter());
+        else if ("Telefone".contentEquals(pacientDTO.getType())) return pacientRepository.findByPhoneAndAndSchedule(pacientDTO.getFilter());
         else throw new RuntimeException("Não encontrado");
     }
 

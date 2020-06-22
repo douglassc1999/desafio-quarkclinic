@@ -4,6 +4,8 @@ import com.desafio.quarkclinic.model.Pacient;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 
+import java.util.Date;
+
 public interface PacientRepository extends CrudRepository<Pacient, Long> {
 
     @Query("SELECT pct FROM Pacient pct WHERE pct.cpf= :cpf AND pct.schedule = true")

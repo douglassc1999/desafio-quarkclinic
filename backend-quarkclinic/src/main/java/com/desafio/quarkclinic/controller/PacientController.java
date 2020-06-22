@@ -25,7 +25,7 @@ public class PacientController {
 
     @PostMapping
     public ResponseEntity<Pacient> getPacientByFilter(@RequestBody PacientDTO pacientDTO) {
-        return new ResponseEntity<>(pacientService.getPacientByFilter(pacientDTO.getFilter(), pacientDTO.getType()), HttpStatus.OK);
+        return new ResponseEntity<>(pacientService.getPacientByFilter(pacientDTO), HttpStatus.OK);
     }
 
 }

@@ -36,6 +36,7 @@ export class ConfigService {
   }
 
   logOut() {
+    window.sessionStorage.setItem('user', '')
     window.sessionStorage.setItem('jwt', '')
   }
 }

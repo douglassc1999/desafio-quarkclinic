@@ -36,9 +36,13 @@ public class DataLoader implements ApplicationRunner {
             createQueue(pacients, pacients2, pacients3);
 
             //Adicionando agendado
-            Pacient pacientSchedule = new Pacient("Rafael Garcia", "01727774450", "20/12/1999", "84987300147");
+            Pacient pacientSchedule = new Pacient("Rafael Garcia", "01727774450", "20121999", "84987300147");
             pacientSchedule.setSchedule(true);
             pacientService.save(pacientSchedule);
+
+            Pacient pacientSchedule2 = new Pacient("Gleydson Lima", "11111111111", "20121999", "84911111111");
+            pacientSchedule2.setSchedule(true);
+            pacientService.save(pacientSchedule2);
         }
     }
 
@@ -51,6 +55,18 @@ public class DataLoader implements ApplicationRunner {
 
         Queue raio = new Queue("RX", "Raio-X", pacients3, new ArrayList<>());
         queueService.save(raio);
+
+        Queue densidade = new Queue("DO", "Densiometria Óssea", new ArrayList<>(), new ArrayList<>());
+        queueService.save(densidade);
+
+        Queue contrastado = new Queue("CT", "Contrastado", new ArrayList<>(), new ArrayList<>());
+        queueService.save(contrastado);
+
+        Queue rm = new Queue("RM", "Recebimento e marcação", new ArrayList<>(), new ArrayList<>());
+        queueService.save(rm);
+
+        Queue ultra = new Queue("US", "Ultrassonografia", new ArrayList<>(), new ArrayList<>());
+        queueService.save(ultra);
     }
 
     private List<Pacient> createPacients() {
