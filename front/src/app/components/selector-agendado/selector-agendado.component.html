@@ -1,7 +1,7 @@
 <div class="selectors flex-box">
     <img mat-card-image [src] ="url" >
-    <mat-card class="normal mat-elevation-z6" (click)="showOnConsole('agendado')" >Agendado</mat-card>
-    <mat-card class="prefer mat-elevation-z6" >Não Agendado</mat-card>
+    <mat-card class="normal mat-elevation-z6" (click)="showModalSearch('agendado')" >Agendado</mat-card>
+    <mat-card class="prefer mat-elevation-z6" (click)="showModalNoSchedule('agendado')">Não Agendado</mat-card>
     <div class="action-buttons">
         <button mat-raised-button (click)="goConfig()"><mat-icon aria-hidden="false" aria-label="Example home icon">settings</mat-icon></button>
     </div>

@@ -1,8 +1,14 @@
-<h1 mat-dialog-title style="align-content: center;">Ficha de atendimento</h1>
 <div mat-dialog-content>
-  <p>data de cadastro: </p>
-  <div>
+  <h1 mat-dialog-title style="text-align: center;">Ficha de atendimento</h1>
+  <div style="text-align: center"> 
+    data de cadastro: {{ data.date }}
+    =====================================
+  </div>
+  <div style="font-size: 20px; margin: 10px 0 10px 0; text-align: center">
     Senha: {{ data.position }}
   </div>
-  <p>ATENDIMENTO {{ data.prefer }}</p>
+  <div style="text-align: center">
+    <p>ATENDIMENTO {{ data.prefer }}</p>
+    =====================================
+  </div>
 </div>

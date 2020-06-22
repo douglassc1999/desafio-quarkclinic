@@ -1,3 +1,4 @@
+import { AuthService } from './../../../services/auth.service';
 import { PacientDTO } from './../../../models/dto/pacient.dto';
 import { PacientService } from './../../../services/pacient.service';
 import { Pacient } from '../../../models/pacient.model';
@@ -27,7 +28,8 @@ export class ModalSearchAgendaComponent implements OnInit {
     public dialogRef: MatDialogRef<ModalSearchAgendaComponent>,
     @Inject(MAT_DIALOG_DATA) public data: string,
     public dialog: MatDialog,
-    private pacientService: PacientService) { }
+    private pacientService: PacientService,
+    private authService: AuthService) { }
 
   ngOnInit(): void {
   }
@@ -62,21 +64,22 @@ export class ModalSearchAgendaComponent implements OnInit {
       type: this.value
     }
     console.log(filter)
-    var dialogRef
     this.pacientService.getPacient(this.pacientFilter).subscribe(paciente => {
-      this.paciente = paciente
-      console.log(paciente)
+      if (paciente !== null) {
+        this.data = ''
+        this.paciente = paciente
+        console.log(paciente)
 
-      this.dialog.open(ModalReportPacientComponent, {
-        width: '800px',
-        data: paciente
-      });
+        this.dialog.open(ModalReportPacientComponent, {
+          width: '800px',
+          data: paciente
+        });
+      
+      } else {
+        this.authService.openSnackBar('Paciente não encontrado', 'fechar')
+      }
+
     })
-
-    // dialogRef = this.dialog.open(ModalReportPacientComponent, {
-    //   width: '800px',
-    //   data: this.paciente
-    // });
   }
 
   cleanScreen(): void {

@@ -6,7 +6,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { Queue } from '../../models/queue.model';
 import { Component, OnInit, Inject } from '@angular/core';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { Location } from '@angular/common';
+import { Location, DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-queue',
@@ -70,12 +70,17 @@ export class QueueComponent implements OnInit {
 @Component({
   selector: 'modal-report-queue',
   templateUrl: 'modal-report-queue.html',
+  styleUrls: ['./modal-report-queue.css']
 })
 export class ModalReportQueue {
 
   constructor(
     public dialogRef: MatDialogRef<ModalReportQueue>,
-    @Inject(MAT_DIALOG_DATA) public data: Position) { }
+    @Inject(MAT_DIALOG_DATA) public data: Position,
+    private datePipe: DatePipe) {
+      data.date = datePipe.transform(data.date,'dd/MM/yyyy HH:mm:ss');
+      console.log(data);
+     }
 
   onNoClick(): void {
     this.dialogRef.close();

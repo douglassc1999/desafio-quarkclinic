@@ -3,8 +3,11 @@ package com.desafio.quarkclinic.model;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
+import java.util.Date;
 import java.util.List;
 
 @Data
@@ -16,6 +19,12 @@ public class Queue {
     @GeneratedValue
     @JsonIgnore
     private Long id;
+
+    @CreatedDate
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date date = new Date();
+
     private String prefix;
     private String name;
 

@@ -31,6 +31,8 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatSelectModule } from '@angular/material/select';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatDividerModule } from '@angular/material/divider';
+import { DatePipe } from '@angular/common';
+import { NaoAgendadoComponent } from './components/selector-agendado/nao-agendado/nao-agendado.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -43,7 +45,8 @@ import { MatDividerModule } from '@angular/material/divider';
     SelectorAgendadoComponent,
     ModalSearchAgendaComponent,
     ModalReportPacientComponent,
-    LoginComponent
+    LoginComponent,
+    NaoAgendadoComponent
   ],
   imports: [
     BrowserModule,
@@ -62,9 +65,9 @@ import { MatDividerModule } from '@angular/material/divider';
     MatIconModule,
     MatSelectModule,
     MatSnackBarModule,
-    MatDividerModule 
+    MatDividerModule
   ],
-  providers: [AuthService, AuthGuard, ConfigService],
+  providers: [AuthService, AuthGuard, ConfigService, DatePipe],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

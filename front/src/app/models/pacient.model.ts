@@ -4,4 +4,5 @@ export interface Pacient {
     phone?: string
     cpf: string
     birthday: string
+    date: string
 }

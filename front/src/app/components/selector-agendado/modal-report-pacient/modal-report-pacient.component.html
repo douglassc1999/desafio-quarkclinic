@@ -1,4 +1,16 @@
-<p>Relatorio do paciente</p>
-<div>Nome: {{ data.name }}</div>
-<div>Telefone: {{ data.phone | mask: '(00) 00000-0000'}}</div>
-<div>CPF: {{ data.cpf | mask: '000.000.000-00'}}</div>
+
+<div mat-dialog-content style="font-size: 16px; height: auto;">
+    <h1 mat-dialog-title style="text-align: center; font-size: 25px;" >Relatorio do paciente</h1>
+    <div style="text-align: center">
+        Nome: {{ data.name }}
+    </div>
+    <div style="text-align: center">
+        Data de Cadastro: {{ data.date }}
+    </div>
+    <div style="text-align: center">
+        Telefone: {{ data.phone | mask: '(00) 00000-0000'}}
+    </div>
+    <div style="text-align: center">
+        CPF: {{ data.cpf | mask: '000.000.000-00'}}
+    </div>
+</div>

@@ -1,3 +1,4 @@
+import { NaoAgendadoComponent } from './nao-agendado/nao-agendado.component';
 import { ConfigService } from './../../services/config.service';
 import { QueueService } from './../../services/queue.service';
 import { ModalSearchAgendaComponent } from './modal-search-agenda/modal-search-agenda.component';
@@ -25,12 +26,26 @@ export class SelectorAgendadoComponent implements OnInit {
     }
   }
 
-  showOnConsole(name: string): void {
+  showModalSearch(name: string): void {
     this.queueService.onMessage(name)
     // pegar o numero da ficha
     const dialogRef = this.dialog.open(ModalSearchAgendaComponent, {
       width: '800px',
       data: ''
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+      console.log(result)
+    });
+  }
+
+  showModalNoSchedule(name: string): void {
+    this.queueService.onMessage(name)
+    // pegar o numero da ficha
+    const dialogRef = this.dialog.open(NaoAgendadoComponent, {
+      width: '800px',
+      data: '',
     });
 
     dialogRef.afterClosed().subscribe(result => {

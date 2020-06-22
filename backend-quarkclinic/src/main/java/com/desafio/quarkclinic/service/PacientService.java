@@ -46,6 +46,8 @@ public class PacientService {
         Pacient pacientSave = new Pacient();
         String att;
         String pos;
+        String concat;
+        Integer sizeQueue;
 
         if (prefer.contentEquals("prefer")) {
             pacientSave.setPrefer(true);
@@ -62,15 +64,31 @@ public class PacientService {
             queueRepo.setPacientsPrefer(pacientsPrefer);
             queue = queueRepository.save(queueRepo);
             pos = String.valueOf(queue.getPacientsPrefer().size());
+            sizeQueue = queue.getPacientsPrefer().size();
+            if(sizeQueue < 10) {
+                concat = queue.getPrefix() + "-00" + pos + "P";
+            } else if (sizeQueue >= 10 && sizeQueue < 100 ) {
+                concat = queue.getPrefix() + "-0" + pos + "P";
+            } else {
+                concat = queue.getPrefix() + "-" + pos;
+            }
+
         } else {
             pacients.add(pacient);
             queueRepo.setPacients(pacients);
             queue = queueRepository.save(queueRepo);
             pos = String.valueOf(queue.getPacients().size());
+            sizeQueue = queue.getPacients().size();
+            if(sizeQueue < 10) {
+                concat = queue.getPrefix() + "-00" + pos;
+            } else if (sizeQueue >= 10 && sizeQueue < 100 ) {
+                 concat = queue.getPrefix() + "-0" + pos;
+            } else {
+                concat = queue.getPrefix() + "-" + pos;
+            }
         }
 
-        return new PositionDTO(queue.getPrefix() + "-" + pos,
-                att);
+        return new PositionDTO(concat, pacient.getDate(), att);
     }
 
     /**
