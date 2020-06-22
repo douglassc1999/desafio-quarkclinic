@@ -1,4 +1,4 @@
 export interface Position {
-    position: String
-    prefer: String
+    position: string
+    prefer: string
 }

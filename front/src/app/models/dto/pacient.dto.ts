@@ -1,4 +1,4 @@
 export interface PacientDTO {
-    filter: String
-    type: String
+    filter: string
+    type: string
 }

@@ -18,12 +18,18 @@ export class AuthGuard implements CanActivate {
     state: RouterStateSnapshot
   ): Observable<boolean> | boolean {
 
-    if(this.authService.userIsAuthenticated()) {
+    // se token ainda for válido
+    console.log('Entrou no guard')
+    if(this.authService.jwtIsValid()) {
+      console.log('jwt: ' + this.authService.jwtIsValid())
       return true
     }
 
+    console.log('jwt: ' + this.authService.jwtIsValid())
     this.router.navigate(['/login'])
 
     return false
   }
+
+  
 }

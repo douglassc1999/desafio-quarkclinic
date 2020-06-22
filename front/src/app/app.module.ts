@@ -1,3 +1,4 @@
+import { ConfigService } from './services/config.service';
 import { AuthGuard } from './guards/auth.guard';
 import { AuthService } from './services/auth.service';
 import { BrowserModule } from '@angular/platform-browser';
@@ -27,6 +28,8 @@ import { ModalReportPacientComponent } from './components/selector-agendado/moda
 import { NgxMaskModule } from 'ngx-mask';
 import { LoginComponent } from './views/login/login.component';
 import { MatIconModule } from '@angular/material/icon';
+import { MatSelectModule } from '@angular/material/select';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 @NgModule({
   declarations: [
@@ -56,9 +59,11 @@ import { MatIconModule } from '@angular/material/icon';
     MatInputModule,
     MatTabsModule,
     NgxMaskModule.forRoot(),
-    MatIconModule
+    MatIconModule,
+    MatSelectModule,
+    MatSnackBarModule
   ],
-  providers: [AuthService, AuthGuard],
+  providers: [AuthService, AuthGuard, ConfigService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

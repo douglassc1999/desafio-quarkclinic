@@ -8,12 +8,21 @@
         <mat-card-content>
 
             <mat-label>Escolher imagem</mat-label>
-            <mat-label>Escolher modo de exibição</mat-label>
+            <mat-form-field>
+                <mat-label>{{ selectHomePage }} </mat-label>
+                <mat-select [(value)]="selectHomePage">
+                    <mat-option value="chegada">Ordem de chegada</mat-option>
+                    <mat-option value="agendado">Agendamento</mat-option>
+                </mat-select>
+            </mat-form-field>
 
         </mat-card-content>
 
         <mat-card-actions>
-            <button mat-raised-button routerLink='/config'>Salvar</button>
+            <button mat-raised-button (click)="saveConfig()">Salvar</button>
+            <button mat-raised-button (click)="home()">
+                <mat-icon aria-hidden="false" aria-label="Example home icon">home</mat-icon>
+            </button>
         </mat-card-actions>
     </mat-card>
 </div>
