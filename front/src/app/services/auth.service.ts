@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { ConfigService } from './config.service';
 import { UserDTO } from './../models/dto/user.dto';
 import { Injectable } from '@angular/core';
@@ -12,7 +13,8 @@ export class AuthService {
   
 
   constructor(private configService: ConfigService,
-    private snackBar: MatSnackBar) { }
+    private snackBar: MatSnackBar,
+    private router: Router) { }
 
   // Mockado
   login(user: UserDTO) {
@@ -23,7 +25,8 @@ export class AuthService {
       window.sessionStorage.setItem('user', JSON.stringify(user.username))
       window.sessionStorage.setItem('jwt', JSON.stringify('eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c'))
 
-      this.configService.redirectDefaultPage()
+      // this.configService.redirectDefaultPage()
+      this.router.navigate(['/config'])
     } else {
       this.userAuthenticated = false
       
@@ -39,7 +42,7 @@ export class AuthService {
   // Mockado
   jwtIsValid(): boolean {
     var jwt = window.sessionStorage.getItem('jwt')
-    if(jwt) {
+    if(jwt != '' && jwt != 'undefined' && jwt != undefined) {
       return true
     }
     return false

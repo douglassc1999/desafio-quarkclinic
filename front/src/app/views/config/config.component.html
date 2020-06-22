@@ -7,10 +7,13 @@
 
         <mat-card-content>
 
-            <mat-label>Escolher imagem</mat-label>
+            <mat-label>Escolha a logo</mat-label>
+            <img *ngIf="url" [src]="url" height="200"> <br>
+            <input type='file' (change)="onSelectFile($event)">
+            <br>
             <mat-form-field>
-                <mat-label>{{ selectHomePage }} </mat-label>
-                <mat-select [(value)]="selectHomePage">
+                <mat-label> Escolha o modo de exibição </mat-label>
+                <mat-select [(value)]="selectHomePage" required>
                     <mat-option value="chegada">Ordem de chegada</mat-option>
                     <mat-option value="agendado">Agendamento</mat-option>
                 </mat-select>

@@ -1,3 +1,4 @@
+import { ConfigService } from './../../services/config.service';
 import { Position } from '../../models/dto/position.dto';
 import { PacientService } from './../../services/pacient.service';
 import { QueueService } from './../../services/queue.service';
@@ -15,18 +16,25 @@ import { Location } from '@angular/common';
 export class QueueComponent implements OnInit {
 
   queues: Queue[]
+  url: string = 'https://app.quarkclinic.com.br/app/assets/Logo-3348c3daf10c83b9c7332147a5649024.png'
 
   constructor(public dialog: MatDialog,
     private queueService: QueueService,
     private pacientService: PacientService,
     private router: Router,
     private location: Location,
-    private route: ActivatedRoute) { }
+    private route: ActivatedRoute,
+    private configService: ConfigService) { }
 
   ngOnInit(): void {
+    if (this.configService.getImgLogo() !== null && this.configService.getImgLogo() !== 'undefined' && this.configService.getImgLogo() !== undefined) {
+      this.url = this.configService.getImgLogo()
+    }
+
     this.queueService.getQueues().subscribe(queues => {
       this.queues = queues
     })
+
   }
 
   addPacientOnQueue(prefix: string): void {
@@ -46,9 +54,6 @@ export class QueueComponent implements OnInit {
         this.router.navigate(['/chegada'])
       });
     })
-
-  
-
   }
 
   goBack(): void {
@@ -56,9 +61,10 @@ export class QueueComponent implements OnInit {
   }
 
   goConfig(): void {
+    // logout
+    this.configService.logOut()
     this.router.navigate(['/config'])
   }
-
 }
 
 @Component({

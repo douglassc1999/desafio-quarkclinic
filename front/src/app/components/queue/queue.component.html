@@ -1,4 +1,5 @@
 <div class="flex-box">
+    <img mat-card-image [src] ="url" >
     <mat-grid-list class="list-queues" cols="2" rowHeight="150px" [gutterSize]="'10px'">
         <mat-grid-tile *ngFor="let queue of queues" (click)="addPacientOnQueue(queue.prefix)"
             class="queueSelector mat-elevation-z6">
@@ -8,6 +9,6 @@
 
     <div class="action-buttons">
         <button mat-raised-button (click)="goBack()"><mat-icon aria-hidden="false" aria-label="Example home icon">keyboard_backspace</mat-icon></button>
-        <button mat-raised-button  routerLink='/config'><mat-icon aria-hidden="false" aria-label="Example home icon">settings</mat-icon></button>
+        <button mat-raised-button (click)="goConfig()"><mat-icon aria-hidden="false" aria-label="Example home icon">settings</mat-icon></button>
     </div>
 </div>

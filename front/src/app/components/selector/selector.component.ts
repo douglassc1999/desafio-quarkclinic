@@ -1,3 +1,4 @@
+import { ConfigService } from './../../services/config.service';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
@@ -9,10 +10,15 @@ import { Router } from '@angular/router';
 export class SelectorComponent implements OnInit {
 
   choose: string = ''
+  url: string = 'https://app.quarkclinic.com.br/app/assets/Logo-3348c3daf10c83b9c7332147a5649024.png'
 
-  constructor(private router: Router) { }
+  constructor(private router: Router,
+    private configService: ConfigService) { }
 
   ngOnInit(): void {
+    if(this.configService.getImgLogo() !== null && this.configService.getImgLogo() !== 'undefined' && this.configService.getImgLogo() !== undefined) {
+      this.url = this.configService.getImgLogo()
+    }
   }
 
   // TODO UM MÉTODO SÓ PRA ISSO  
@@ -29,5 +35,11 @@ export class SelectorComponent implements OnInit {
     console.log("Escolheu fila preferencial")
     this.choose = 'prefer'
     this.router.navigate(['chegada/filas/prefer'])
+  }
+
+  goConfig(): void {
+    // logout
+    this.configService.logOut()
+    this.router.navigate(['/config'])
   }
 }

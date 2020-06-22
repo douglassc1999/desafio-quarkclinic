@@ -52,7 +52,6 @@ export class ModalSearchAgendaComponent implements OnInit {
     var tab = event.toElement.innerText
     console.log(tab)
     if (tab !== 'Confirmar' || tab !== 'Cancelar') this.data = this.formatValue(this.data + tab)
-
   }
 
   confirmReportPacient(): void {

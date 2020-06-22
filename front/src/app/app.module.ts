@@ -30,7 +30,7 @@ import { LoginComponent } from './views/login/login.component';
 import { MatIconModule } from '@angular/material/icon';
 import { MatSelectModule } from '@angular/material/select';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
-
+import { MatDividerModule } from '@angular/material/divider';
 @NgModule({
   declarations: [
     AppComponent,
@@ -61,7 +61,8 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     NgxMaskModule.forRoot(),
     MatIconModule,
     MatSelectModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatDividerModule 
   ],
   providers: [AuthService, AuthGuard, ConfigService],
   bootstrap: [AppComponent]

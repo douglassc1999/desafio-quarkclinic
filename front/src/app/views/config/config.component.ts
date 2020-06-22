@@ -1,7 +1,5 @@
 import { ConfigService } from './../../services/config.service';
-import { AuthService } from './../../services/auth.service';
 import { Component, OnInit } from '@angular/core';
-import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
@@ -13,8 +11,10 @@ export class ConfigComponent implements OnInit {
 
   hide = true;
 
+  url: any;
+
   selectHomePage: string // true: chegada 
-                          // false: agendado
+  // false: agendado
 
   constructor(private configService: ConfigService,
     private snackBar: MatSnackBar) { }
@@ -24,7 +24,13 @@ export class ConfigComponent implements OnInit {
   }
 
   saveConfig() {
-    this.configService.setHomePage(this.selectHomePage ) 
+    //salvar foto
+    if(this.url !== undefined) {
+      console.log('entrou lop imagem upload')
+      console.log(this.url)
+      this.configService.setImgLogo(this.url)  
+    } 
+    this.configService.setHomePage(this.selectHomePage)
     this.openSnackBar('Salvo com sucesso', 'fechar')
   }
 
@@ -37,6 +43,20 @@ export class ConfigComponent implements OnInit {
     this.snackBar.open(message, action, {
       duration: 2000,
     });
+  }
+
+
+  onSelectFile(event) { // called each time file input changes
+    if (event.target.files && event.target.files[0]) {
+      var reader = new FileReader();
+
+      reader.readAsDataURL(event.target.files[0]); // read file as data url
+
+      reader.onload = (event) => { // called once readAsDataURL is completed
+        console.log(typeof(event.target.result))
+        this.url = event.target.result;
+      }
+    }
   }
 
 }
