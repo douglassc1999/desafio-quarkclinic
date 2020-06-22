@@ -12,6 +12,7 @@ export class QueueService {
   constructor(private http: HttpClient) { }
 
   baseUrl = 'http://localhost:9000/queues'
+  // baseUrl = 'https://desafio-quarkclinic.herokuapp.com/queues'
 
   onMessage(msg: string): void {
     console.log(msg)
