@@ -40,7 +40,7 @@ public class DataLoader implements ApplicationRunner {
             pacientSchedule.setSchedule(true);
             pacientService.save(pacientSchedule);
 
-            Pacient pacientSchedule2 = new Pacient("Gleydson Lima", "11111111111", "20121999", "84911111111");
+            Pacient pacientSchedule2 = new Pacient("Gleydson Lima", "01727774450", "20121999", "84911111111");
             pacientSchedule2.setSchedule(true);
             pacientService.save(pacientSchedule2);
         }
